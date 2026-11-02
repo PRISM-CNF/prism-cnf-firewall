@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nse-ovs-firewall-rules
+  namespace: nse-ovs-firewall
+data:
+  rules.yaml: |
+    mode: allowlist
+    rules:
+      - name: allow-icmp
+        left_cidrs:
+          - 172.16.1.100/31
+        right_cidrs:
+          - 172.16.1.100/31
+        protocol: icmp
+      - name: allow-tcp-5201
+        left_cidrs:
+          - 172.16.1.100/31
+        right_cidrs:
+          - 172.16.1.100/31
+        protocol: tcp
+        dst_ports:
+          - 5201
+      - name: allow-udp-5201
+        left_cidrs:
+          - 172.16.1.100/31
+        right_cidrs:
+          - 172.16.1.100/31
+        protocol: udp
+        dst_ports:
+          - 5201
+      - name: allow-tcp-8080
+        left_cidrs:
+          - 172.16.1.100/31
+        right_cidrs:
+          - 172.16.1.100/31
+        protocol: tcp
+        dst_ports:
+          - 8080

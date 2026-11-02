@@ -1,0 +1,16 @@
+apiVersion: networkservicemesh.io/v1
+kind: NetworkService
+metadata:
+  name: nse-ovs-firewall
+  namespace: nse-ovs-firewall
+spec:
+  payload: ETHERNET
+  matches:
+    - source_selector:
+        app: firewall
+      routes:
+        - destination_selector:
+            app: server
+    - routes:
+        - destination_selector:
+            app: firewall
